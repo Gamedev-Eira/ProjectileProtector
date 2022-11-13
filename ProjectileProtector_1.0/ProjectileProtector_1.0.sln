@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ProjectileProtector_1.0", "ProjectileProtector_1.0\ProjectileProtector_1.0.pyproj", "{4268D399-CCB9-43A2-AB6D-C5A556771F38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4268D399-CCB9-43A2-AB6D-C5A556771F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4268D399-CCB9-43A2-AB6D-C5A556771F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D6E97EF-9C36-4DD0-86DF-93A02666BB1C}
+	EndGlobalSection
+EndGlobal
