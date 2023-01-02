@@ -57,29 +57,39 @@ class House():
             self.listOfHouses.append(temp)
             self.houseOffset += 1
 
+    def showHouseCenter(self, houseAccess):
+        return self.listOfHouses[houseAccess].center
+
     def drawHouse(self):
         #updates the x coordinate of planeHitbox after it's been updated by movePlane()
         for x in range(self.numOfHouses):
             pygame.draw.rect(SCREEN, COLOUR_BLACK, self.listOfHouses[x])  
 
-class misile():
+class Misile():
 
-    def __init__(self, start, end):
-        self.startPoint = start;
-        self.desPoint = end;
-        self.currentPoint = self.endPoint;
+    def __init__(self, start, end, size):
+        #first bracket is difference between starting point and the end point on the x coordinate
+        #second bracket is the difference between the end point and the start point on the y coordinate
+        #the latter is divided from the former to calculate the amount the missile needs to move on the X axis
+        self.moveX = (end[1] - start[1]) / (end[0] - start[0])
+        self.misileHitbox = pygame.Rect(start[0], start[1], size, size)
 
+        print(self.moveX)
+
+    def moveMisile(self):
+        pygame.Rect.move_ip(self.misileHitbox, self.moveX, 5)
+        pygame.draw.rect(SCREEN, COLOUR_BLACK, self.misileHitbox)
 
 #main game loop
 if playGame == True:
     
     groundHeight = int(SCREEN_SIZE[1] - (INCREMENT*2))
-    groundRect = pygame.Rect(0, groundHeight, SCREEN_SIZE[0], SCREEN_SIZE[1])
+    houseNumber = int(7)
 
     plane = Plane()    #initalises the object plane
-
-    houseNumber = int(7)
     houses = House(groundHeight, houseNumber)  #initalise houses
+    missile = Misile([25, 75], [100, 475], 5)
+
 
     while(playGame == True):
         CLOCK.tick(30)  #sets the FPS of the program to 30
@@ -87,12 +97,16 @@ if playGame == True:
 
         SCREEN.fill(COLOUR_WHITE)   #make screen colour white
 
-        pygame.draw.rect(SCREEN, COLOUR_GREEN, groundRect)
+        #groundRect = pygame.Rect()
+
+        pygame.draw.rect(SCREEN, COLOUR_GREEN, (0, groundHeight, SCREEN_SIZE[0], SCREEN_SIZE[1]))
 
         plane.movePlane()   #calls code to move the plane
         plane.drawPlane()   #draws the plane's updated position
 
         houses.drawHouse()
+
+        missile.moveMisile()
 
         pygame.display.flip()   #updates screen
 
